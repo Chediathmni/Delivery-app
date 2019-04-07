@@ -1,33 +1,70 @@
-.App {
-  text-align: center;
+:root {
+  --mainBleu: #2a2a72;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #ffa400;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Oswald', sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text-title {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.text-bleu {
+  color: var(--mainBleu);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.text-bright {
+  color: var(--lightBlue);
+}
+
+.AutoCompleteText {
+  width: 100%;
+  border: 1px solid gray;
+  box-shadow:  0 0 0 1px rgba(0, 0, 0,.1), 0 2px 4px 1px rgba(0, 0, 0, .18);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.73);
+}
+
+.AutoCompleteText input {
+  width: 100%;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.73);
+  padding: 10px 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.AutoCompleteText ul {
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid grey;
+}
+
+.AutoCompleteText ul::before {
+  content: "";
+}
+
+.AutoCompleteText li {
+  padding: 10px 5px;
+}
+
+.AutoCompleteText li:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+  text-decoration: underline;
+
 }

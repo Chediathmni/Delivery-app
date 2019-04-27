@@ -9,8 +9,11 @@ class ProductProvider extends Component {
         products: [],
         detailProduct: {},
         cart: [],
-        modalOpen:false,
-        modalProduct: detailProduct
+        modalOpen: false,
+        modalProduct: detailProduct,
+        cartSubTotal: 0,
+        cartTax:0,
+        cartTotal:0
     }
 
     componentDidMount = () => {
@@ -40,17 +43,19 @@ class ProductProvider extends Component {
     }
 
     addToCart = (id) => {
+
         let tempProducts = [...this.state.products]
         const index = tempProducts.indexOf(this.getItem(id))
         const product = tempProducts[index]
         product.inCart = true;
         product.count = 1;
         product.total = product.price * product.count;
+
         this.setState(()=>{
                 return {products:tempProducts, cart: [...this.state.cart,product]}
             },
             ()=> {
-                console.log(this.state)
+                this.addTotals();
             }
         )
     }
@@ -71,6 +76,82 @@ class ProductProvider extends Component {
         })
     }
 
+    increment = (id) => {
+        let tempCart = [...this.state.cart]
+        tempCart.forEach((item) => {
+            if (item.id === id) {
+                item.count++
+                item.total = item.count * item.price
+            }
+        })
+        this.setState(() => {
+                return {
+                    cart: tempCart
+                }
+            },() => {
+                this.addTotals();
+            }) 
+        }
+
+    decrement = (id) => {
+        let tempCart = [...this.state.cart]
+        tempCart.forEach((item) => {
+            if (item.id === id) { 
+                if (item.count > 1)  {
+                    item.count--
+                    item.total = item.count * item.price
+                }
+            }
+        })
+        this.setState(() => {
+                return {
+                    cart: tempCart
+                }
+            },() => {
+                this.addTotals();
+            }) 
+        }
+
+    removeItem = (id) => {
+        let tempCart = [...this.state.cart]
+        tempCart = tempCart.filter((item) => item.id !== id)
+
+        this.setState(() => {
+            return {
+                cart: [...tempCart]
+            }
+        },() => {
+            this.setProducts();
+            this.addTotals();
+        })
+    }
+
+    clearCart = () => {
+        this.setState(()=> {
+            return {
+                cart: []
+            }
+        },() => {
+            this.setProducts();
+            this.addTotals();
+        })
+    }
+
+    addTotals = () => {
+        let subTotal = 0;
+        this.state.cart.map(item => (subTotal += item.total))
+        const tempTax = subTotal * 0.1
+        const tax = parseFloat(tempTax.toFixed(2));
+        const total = subTotal + tax;
+        this.setState(()=> {
+            return {
+                cartSubTotal: subTotal,
+                cartTax: tax,
+                cartTotal: total
+            }
+        })
+    }
+
     render() {
         return (
             <ProductContext.Provider value={{
@@ -78,7 +159,11 @@ class ProductProvider extends Component {
                 handleDetail: this.handleDetail,
                 addToCart: this.addToCart,
                 openModal: this.openModal,
-                closeModal: this.closeModal
+                closeModal: this.closeModal,
+                increment: this.increment,
+                decrement: this.decrement,
+                removeItem: this.removeItem,
+                clearCart: this.clearCart
                 }}>
                 {this.props.children}
             </ProductContext.Provider>

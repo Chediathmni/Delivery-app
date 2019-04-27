@@ -58,7 +58,7 @@ class ProductList extends Component {
                 <div className="py-5">
                     <div className="container">
                         <Title name="our" title="products" />
-                        <div className="CountryInput AutoCompleteText">
+                        <div className="AutoCompleteText">
                             <input value={text} onChange={this.onTextChanged} type='text' placeholder="Search for Products" className="pl-3"/>
                             {this.renderSuggestions()}
                         </div>

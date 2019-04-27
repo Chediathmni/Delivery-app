@@ -9,8 +9,8 @@ border-color: ${props => props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
 color: var(--lightBlue);
 color: ${props => props.cart ? "var(--mainYellow)" : "var(--lightBlue)"}; 
 border-radius: 0.5rem;
-padding: ${props => props.icon ? "0.2rem 0.5rem" : "0.2rem 0.6rem"};
-margin: ${props => props.icon ? "0.2rem 0.5rem 0.2rem 0" : "0.3rem 0.3rem 0.3rem 0.3rem"};
+padding: ${props => props.icon ? "0.3rem 0.6rem" : "0.3rem 0.7rem"};
+margin: ${props => props.icon ? "0.3rem 0.6rem 0.3rem 0" : "0.4rem 0.4rem 0.4rem 0.4rem"};
 cursor: pointer;
 transition:all 0.5s ease-in-out;
 &:hover {

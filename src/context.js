@@ -9,6 +9,7 @@ class ProductProvider extends Component {
         products: [],
         detailProduct: {},
         cart: [],
+        delivery: {},
         modalOpen: false,
         modalProduct: detailProduct,
         cartSubTotal: 0,
@@ -30,6 +31,20 @@ class ProductProvider extends Component {
             return {products:tempProducts}
         })
     }
+
+/*     setDeliveries = () => {
+        let tempDel = [];
+        Deliveries.forEach((item) => {
+            const singleItem = {...item}
+            tempDel = [...tempDel,singleItem]
+        })
+        this.setState(() => {
+            return {deliveries: tempDel}
+        },() => {
+            console.log(this.state.deliveries)
+        })
+    } */
+
 
     getItem = (id) => {
         return this.state.products.find((product => product.id === id))

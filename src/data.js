@@ -114,6 +114,7 @@ export const detailProduct = {
 export const Deliveries = [
   {
     code : "ABC123",
+    date: "22-11-2019",
     products :[
       {
         id: 1,
@@ -152,7 +153,7 @@ export const Deliveries = [
         total: 8
       }
     ],
-    state: "en cours",
+    status: "en cours",
     path : [
       {
         date: "01/01/2019",

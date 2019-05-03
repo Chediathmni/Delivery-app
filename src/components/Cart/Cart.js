@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ProductConsumer} from '../../context'
-import Title from '../Title'
+import { Title } from '../Title'
 import CartColumns from './CartColumns'
 import EmptyCart from './EmptyCart'
 import CartList from './CartList'
@@ -13,7 +13,7 @@ class Cart extends Component {
         return (
             <section>
                 <ProductConsumer>
-                    {value =>{
+                    {value => {
                         const {cart} = value;
                         if(cart.length > 0) {
                             return (

@@ -36,6 +36,10 @@ body {
   color: rgba(0, 0, 0, 0.73);
 }
 
+.trackInput {
+  width: 90%;
+}
+
 .AutoCompleteText input {
   width: 100%;
   border: none;
@@ -88,4 +92,34 @@ body {
   cursor: pointer;
   font-size: 1.2rem;
   color: var(--mainYellow);
+}
+
+.icon {
+  color: green;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  margin-left : 2rem;
+  width: 120px;
+  background-color: var(--mainDark);
+  color: var(--mainWhite);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.hastooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.close-icon {
+  color: green;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding-left: 31rem;
 }
